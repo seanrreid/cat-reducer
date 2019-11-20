@@ -1,39 +1,73 @@
-import React from "react";
+import React, { useContext } from "react";
+import StateContext from "../context";
 
-import { connect } from "react-redux";
-import { catNap, catEat, catPlay } from "../redux/activity";
+const handleChange = (e, dispatch) => {
+  dispatch({
+    type: "changeName",
+    newName: e.target.value
+  });
+};
 
-const Activity = ({ activity, catNap, catEat, catPlay }) => {
+const Activity = () => {
+  const [value, dispatch] = useContext(StateContext);
+
   return (
     <div>
       <h1>Cat Reducer</h1>
-      <p>Guster is {activity}</p>
+      <p>
+        {value.name} is {value.activity}
+      </p>
+      <p>
+        <label>
+          Change Name:{" "}
+          <input
+            type="text"
+            name="newName"
+            placeholder="New Name"
+            onChange={e => handleChange(e, dispatch)}
+          />
+        </label>
+      </p>
       <ul>
         <li>
-          <button onClick={() => catEat()}>Eating</button>
+          <button
+            onClick={() =>
+              dispatch({
+                type: "changeActivity",
+                activity: "eating"
+              })
+            }
+          >
+            Eating
+          </button>
         </li>
         <li>
-          <button onClick={() => catNap()}>Napping</button>
+          <button
+            onClick={() =>
+              dispatch({
+                type: "changeActivity",
+                activity: "napping"
+              })
+            }
+          >
+            Napping
+          </button>
         </li>
         <li>
-          <button onClick={() => catPlay()}>Playing</button>
+          <button
+            onClick={() =>
+              dispatch({
+                type: "changeActivity",
+                activity: "playing"
+              })
+            }
+          >
+            Playing
+          </button>
         </li>
       </ul>
     </div>
   );
 };
 
-const mapStateToProps = state => {
-  const { activity } = state;
-  return activity;
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    catEat: () => dispatch(catEat()),
-    catNap: () => dispatch(catNap()),
-    catPlay: () => dispatch(catPlay())
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Activity);
+export default Activity;
