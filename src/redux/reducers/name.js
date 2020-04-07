@@ -5,8 +5,8 @@ const initialState = 'Gus';
 const nameReducer = (state = initialState, action) => {
   switch (action.type) {
     case ACTION_SET_NAME: {
-      const { petName } = action.payload;
-      return petName;
+      const { name } = action.payload;
+      return name;
     }
     default:
       return state;
