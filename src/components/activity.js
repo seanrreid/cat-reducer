@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { connect } from "react-redux";
-import { eat, nap, play } from "../redux/actions/activity";
+import { connect } from 'react-redux';
+import { eat, nap, play } from '../redux/actions/activity';
 
 const Activity = ({ activity, eat, nap, play }) => {
   return (
@@ -17,22 +17,9 @@ const Activity = ({ activity, eat, nap, play }) => {
 // THIS IS THE SUBSCRIBER!!!!!
 // It listens for changes in state.
 // It SUBSCRIBES to the state changes...
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const { activity } = state;
   return activity;
 };
 
-// THIS IS THE DISPATCHER!!!!
-// It DISPATCHES the actions to Redux
-const mapDispatchToProps = dispatch => {
-  return {
-    eat: () => dispatch(eat()),
-    nap: () => dispatch(nap()),
-    play: () => dispatch(play())
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Activity);
+export default connect(mapStateToProps, { eat, nap, play })(Activity);
