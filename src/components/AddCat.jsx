@@ -35,13 +35,13 @@ class AddCat extends Component {
           name="petName"
           value={petName}
         />
-        <input
-          type="text"
-          onChange={this.handleChange}
-          placeholder="Cat's Activity"
-          name="activity"
-          value={activity}
-        />
+        <span style={{ margin: '0 8px' }}>is</span>
+        <select name="activity" value={activity} onChange={this.handleChange}>
+          <option defaultValue>Choose an activity</option>
+          <option value="eating">Eating</option>
+          <option value="napping">Napping</option>
+          <option value="playing">Playing</option>
+        </select>
         <button type="submit">Submit</button>
       </form>
     );

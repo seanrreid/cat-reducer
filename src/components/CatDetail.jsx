@@ -3,18 +3,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setActivity } from '../redux/actions';
 
-const CatDetail = ({ cat }) => {
-  console.log('cat is ', cat);
-  const { name, activity } = cat;
+const CatDetail = ({ cat, setActivity }) => {
+  const { name, activity, catId } = cat;
   return (
     <li>
-      <h2>
+      <p>
         {name} is: {activity}
-      </h2>
-      <button onClick={() => setActivity('eating')}>Eating</button>
-      <button onClick={() => setActivity('napping')}>Nap</button>
-      <button onClick={() => setActivity('playing')}>Play</button>
-      <hr />
+      </p>
+      <button onClick={() => setActivity({ id: catId, activity: 'eating' })}>
+        Eating
+      </button>
+      <button onClick={() => setActivity({ id: catId, activity: 'napping' })}>
+        Nap
+      </button>
+      <button onClick={() => setActivity({ id: catId, activity: 'playing' })}>
+        Play
+      </button>
     </li>
   );
 };

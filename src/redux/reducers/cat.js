@@ -21,20 +21,29 @@ const catReducer = (state = initialState, action) => {
   switch (action.type) {
     case ACTION_ADD_CAT: {
       const { name, activity } = action.payload;
-      const newCat = { id: 1003, details: { name, activity } };
-      console.log('new cat', newCat);
+      const uniqueId =
+        Math.random().toString(36).substring(2, 15) +
+        Math.random().toString(36).substring(2, 15);
+
       return {
-        ...state,
-        newCat,
+        cats: {
+          ...state.cats,
+          [uniqueId]: { name, activity },
+        },
       };
     }
+
     case ACTION_SET_ACTIVITY: {
       const { id, activity } = action.payload;
+      const name = state.cats[id].name;
       return {
-        ...state,
-        activity,
+        cats: {
+          ...state.cats,
+          [id]: { name, activity },
+        },
       };
     }
+
     case ACTION_SET_NAME: {
       const { name } = action.payload;
       return name;

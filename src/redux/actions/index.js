@@ -4,9 +4,10 @@ import {
   ACTION_ADD_CAT,
 } from './actionTypes';
 
-export const setActivity = (activity) => ({
+export const setActivity = ({ id, activity }) => ({
   type: ACTION_SET_ACTIVITY,
   payload: {
+    id,
     activity,
   },
 });
