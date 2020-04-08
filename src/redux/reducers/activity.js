@@ -1,6 +1,9 @@
 import { ACTION_SET_ACTIVITY } from '../actions/actionTypes';
 
-const initialState = 'napping';
+const initialState = {
+  activity: 'napping',
+  name: 'Guster',
+};
 
 const activityReducer = (state = initialState, action) => {
   switch (action.type) {

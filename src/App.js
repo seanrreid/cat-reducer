@@ -1,12 +1,14 @@
 import React from 'react';
-import Activity from './components/Activity';
+import AddCat from './components/AddCat';
+import CatList from './components/CatList';
 
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Activity />
+    <div className="App wrapper">
+      <AddCat />
+      <CatList />
     </div>
   );
 }
